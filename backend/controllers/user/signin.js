@@ -1,5 +1,6 @@
 const User = require('../../models/User');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 module.exports = (req, res, next) => {
   // findOne(): finds and returns the document that matches the given selection criteria
@@ -18,7 +19,7 @@ module.exports = (req, res, next) => {
             userId: user._id,
             //.sign(): Encoding of the new token that contains the user's id as payload
             token: jwt.sign({ userId: user._id }, process.env.AUTH_TOKEN, {
-              expiresIn: '30m',
+              expiresIn: '30M',
             }),
           });
         })

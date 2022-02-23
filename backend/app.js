@@ -6,7 +6,6 @@ const articleRoutes = require('./routes/article');
 const userRoutes = require('./routes/user');
 const commentRoutes = require('./routes/comment');
 const app = express();
-
 // CORS
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -23,7 +22,7 @@ app.use((req, res, next) => {
 
 // Conversion en JSON
 app.use(bodyParser.json());
-
+app.use(bodyParser.urlencoded({ extended: true }));
 // Gestion des images
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
