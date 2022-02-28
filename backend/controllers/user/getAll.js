@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
     })
     .catch((error) => {
       res.status(400).json({
-        error: error,
+        error: error.message,
       });
     });
 };

@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
-      if (validator.validate(req.body.email)) {
+      if (validator.validate(req.body.email) !== true) {
         throw new Error('Email non valide');
       }
 
@@ -22,5 +22,7 @@ module.exports = (req, res, next) => {
         .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
         .catch((error) => res.status(400).json({ error }));
     })
-    .catch((error) => res.status(500).json({ error }));
+    .catch((error) => {
+      res.status(500).json({ error: error.message });
+    });
 };
