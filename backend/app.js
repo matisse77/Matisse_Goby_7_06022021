@@ -27,8 +27,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // Routes
-//app.use('/article', articleRoutes);
+app.use('/article', articleRoutes);
 app.use('/user', userRoutes);
-//app.use('/comment', commentRoutes);
+app.use('/comment', commentRoutes);
 
 module.exports = app;

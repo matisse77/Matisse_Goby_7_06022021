@@ -23,12 +23,10 @@ const User = sequelize.define(
   },
   {
     timestamps: true,
-    // tableName: 'users',
+    tableName: 'users',
     createdAt: 'created_at',
     updatedAt: 'updated_at',
   }
 );
-
-User.sync();
 
 module.exports = User;

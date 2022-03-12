@@ -19,7 +19,7 @@ module.exports = (req, res, next) => {
             userId: user._id,
             //.sign(): Encoding of the new token that contains the user's id as payload
             token: jwt.sign({ userId: user._id }, process.env.AUTH_TOKEN, {
-              expiresIn: '30M',
+              expiresIn: '24H',
             }),
           });
         })

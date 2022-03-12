@@ -1,10 +1,14 @@
-//const Article = require('../../models/Article');
+const Article = require('../../models/Article');
 
 module.exports = (req, res, next) => {
   const id = req.params.id;
-  Article.findOne(id)
-    .then((data) => {
-      res.status(200).json(data);
+  Article.findOne({ where: { id: id } })
+    .then((articles) => {
+      res.status(200).json(articles);
     })
-    .catch((err) => res.status(500).json({ err }));
+    .catch((error) => {
+      res.status(400).json({
+        error: error.message,
+      });
+    });
 };

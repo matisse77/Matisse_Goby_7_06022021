@@ -27,11 +27,12 @@ const connect = async () => {
     console.log(
       `Connection to database ${process.env.DATABASE_DB} has been successfully`
     );
+    sequelize.sync();
   } catch (error) {
     console.error('Unable to connect to the database: ', error);
   }
 };
 
-connect();
+connect({ force: true });
 
 module.exports = sequelize;

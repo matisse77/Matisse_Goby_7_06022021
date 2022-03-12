@@ -1,4 +1,4 @@
-//const Article = require('../../models/Article');
+const Article = require('../../models/Article');
 
 module.exports = (req, res, next) => {
   const article = {
@@ -14,5 +14,5 @@ module.exports = (req, res, next) => {
     .then((data) => {
       res.status(200).json(data);
     })
-    .catch((err) => res.status(500).json({ err }));
+    .catch((error) => res.status(500).json({ error: error.message }));
 };
